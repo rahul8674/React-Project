@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { TextField, Button, Paper, Typography, Box } from '@mui/material';
 
 const UserDataForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -41,25 +42,58 @@ const UserDataForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Name:</label>
-        <input name="name" value={formData.name} onChange={handleChange} required />
-      </div>
-      <div>
-        <label>Address:</label>
-        <input name="address" value={formData.address} onChange={handleChange} required />
-      </div>
-      <div>
-        <label>Email:</label>
-        <input name="email" type="email" value={formData.email} onChange={handleChange} required />
-      </div>
-      <div>
-        <label>Phone:</label>
-        <input name="phone" type="tel" value={formData.phone} onChange={handleChange} required />
-      </div>
-      <button type="submit">Submit</button>
-    </form>
+    <Paper elevation={3} sx={{ maxWidth: 400, margin: '20px auto', padding: 3 }}>
+      <Typography variant="h5" gutterBottom>
+        User Data Form
+      </Typography>
+      <form onSubmit={handleSubmit}>
+        <Box mb={2}>
+          <TextField
+            fullWidth
+            label="Name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+        </Box>
+        <Box mb={2}>
+          <TextField
+            fullWidth
+            label="Address"
+            name="address"
+            value={formData.address}
+            onChange={handleChange}
+            required
+          />
+        </Box>
+        <Box mb={2}>
+          <TextField
+            fullWidth
+            label="Email"
+            name="email"
+            type="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+        </Box>
+        <Box mb={2}>
+          <TextField
+            fullWidth
+            label="Phone"
+            name="phone"
+            type="tel"
+            value={formData.phone}
+            onChange={handleChange}
+            required
+          />
+        </Box>
+        <Button type="submit" variant="contained" color="primary" fullWidth>
+          Submit
+        </Button>
+      </form>
+    </Paper>
   );
 };
 
